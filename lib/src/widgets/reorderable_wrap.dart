@@ -1006,6 +1006,21 @@ class _ReorderableWrapContentState extends State<_ReorderableWrapContent>
         onAccept: (int accepted) {},
         onLeave: (Object? leaving) {},
       );
+      Widget centerDragTarget = DragTarget<int>(
+        builder: (BuildContext context, List<int?> acceptedCandidates,
+                List<dynamic> rejectedCandidates) =>
+            SizedBox(),
+        onWillAccept: (int? toAccept) {
+          print('<<<<onWillAccept$toAccept>>>>>>');
+          return true;
+        },
+        onAccept: (int accepted) {
+          print('<<<<onAccept$accepted>>>>>>');
+        },
+        onLeave: (Object? leaving) {
+          print('<<<<onLeave${leaving.toString()}>>>>>>');
+        },
+      );
 
       Widget dragTarget = Stack(
 //        key: keyIndexGlobalKey,
@@ -1032,7 +1047,7 @@ class _ReorderableWrapContentState extends State<_ReorderableWrapContent>
               height: widget.direction == Axis.vertical
                   ? _childSizes[index].height / 3
                   : _childSizes[index].height,
-              child: preDragTarget),
+              child: centerDragTarget),
           Positioned(
               right: 0,
               bottom: 0,
