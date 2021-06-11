@@ -1017,10 +1017,20 @@ class _ReorderableWrapContentState extends State<_ReorderableWrapContent>
               left: 0,
               top: 0,
               width: widget.direction == Axis.horizontal
-                  ? _childSizes[index].width / 2
+                  ? _childSizes[index].width / 3
                   : _childSizes[index].width,
               height: widget.direction == Axis.vertical
-                  ? _childSizes[index].height / 2
+                  ? _childSizes[index].height / 3
+                  : _childSizes[index].height,
+              child: preDragTarget),
+          Positioned(
+              left: _childSizes[index].width / 3,
+              top: 0,
+              width: widget.direction == Axis.horizontal
+                  ? _childSizes[index].width / 3
+                  : _childSizes[index].width,
+              height: widget.direction == Axis.vertical
+                  ? _childSizes[index].height / 3
                   : _childSizes[index].height,
               child: preDragTarget),
           Positioned(
